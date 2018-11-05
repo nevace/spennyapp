@@ -1,35 +1,30 @@
-import React from "react";
-import { StackNavigator } from "react-navigation";
-import { Root } from "native-base";
+import React, { Component } from "react";
+import { Root, Spinner } from "native-base";
+import { Navigation, TabNavigation } from "./routes";
+import firebase from "react-native-firebase";
 
-import Login from "./screens/Login/";
-import IndianFoodMenu from "./screens/IndianFoodMenu/";
-import WesternFoodMenu from "./screens/WesternFoodMenu/";
-import TabNavigation from "./screens/Home/tabNavigation";
-import Location from "./screens/Location/";
-import Favourites from "./screens/Favourites/";
-import Filter from "./screens/Filter/";
-import PhoneNumber from "./screens/PhoneNumber/";
+export default class App extends Component {
+  state = { loggedIn: true, loading: true };
 
-const App = StackNavigator(
-  {
-    Login: { screen: Login },
-    TabNavigation: { screen: TabNavigation },
-    Location: { screen: Location },
-    Filter: { screen: Filter },
-    IndianFoodMenu: { screen: IndianFoodMenu },
-    WesternFoodMenu: { screen: WesternFoodMenu },
-    Favourites: { screen: Favourites },
-    PhoneNumber: { screen: PhoneNumber }
-  },
-  {
-    index: 0,
-    initialRouteName: "Login",
-    headerMode: "none"
+  componentWillMount() {
+    firebase
+      .auth()
+      .onAuthStateChanged(user =>
+        this.setState({ loggedIn: !!user, loading: false })
+      );
   }
-);
 
-export default () =>
-  <Root>
-    <App />
-  </Root>;
+  render() {
+    return (
+      <Root>
+        {this.state.loading ? (
+          <Spinner />
+        ) : this.state.loggedIn ? (
+          <TabNavigation />
+        ) : (
+          <Navigation />
+        )}
+      </Root>
+    );
+  }
+}

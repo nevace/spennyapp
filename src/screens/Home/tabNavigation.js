@@ -50,7 +50,7 @@ const TabNavigation = TabNavigator(
                     : styles.footerItemInactive
                 }
               >
-                Restaurant
+                Restaurants
               </Text>
             </Button>
             {/*<Button*/}
