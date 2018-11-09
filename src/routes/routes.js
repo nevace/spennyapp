@@ -9,7 +9,7 @@ import Account from "../screens/Account/";
 import styles from "../screens/Home/styles";
 import Login from "../screens/Login/";
 // import IndianFoodMenu from "./screens/IndianFoodMenu/";
-// import WesternFoodMenu from "./screens/WesternFoodMenu/";
+import WesternFoodMenu from "../screens/WesternFoodMenu/";
 // import Location from "./screens/Location/";
 // import Favourites from "./screens/Favourites/";
 // import Filter from "./screens/Filter/";
@@ -17,12 +17,12 @@ import Login from "../screens/Login/";
 
 export const Navigation = StackNavigator(
   {
-    Login: { screen: Login }
+    Login: { screen: Login },
     // TabNavigation: { screen: TabNavigation },
     // Location: { screen: Location },
     // Filter: { screen: Filter },
     // IndianFoodMenu: { screen: IndianFoodMenu },
-    // WesternFoodMenu: { screen: WesternFoodMenu },
+    WesternFoodMenu: { screen: WesternFoodMenu }
     // Favourites: { screen: Favourites },
     // PhoneNumber: { screen: PhoneNumber }
   },

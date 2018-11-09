@@ -102,6 +102,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -151,6 +152,7 @@ dependencies {
 
     implementation "com.google.firebase:firebase-core:16.0.4"
     implementation "com.google.firebase:firebase-auth:16.0.5"
+    implementation "com.google.firebase:firebase-firestore:17.1.2"
     implementation project(':react-native-fbsdk')
 }
 
