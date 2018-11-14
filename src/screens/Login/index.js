@@ -1,152 +1,143 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import { Image } from 'react-native';
-import {
-  Container,
-  Content,
-  Text,
-  View,
-  Button,
-  Icon,
-  Grid,
-  Col
-} from "native-base";
-import firebase from "react-native-firebase";
-import { AccessToken, LoginManager } from "react-native-fbsdk";
-import styles from "./styles";
+import { Container, Content, Text, View, Button, Icon, Grid, Col, Root, Spinner } from 'native-base';
+import firebase from 'react-native-firebase';
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import styles from './styles';
 
-const map = require("../../../assets/map.png");
+const map = require('../../../assets/map.png');
 
 class Login extends Component {
-  facebookLogin = async () => {
-    const { navigation } = this.props;
+	state = { loading: true };
 
-    try {
-      const result = await LoginManager.logInWithReadPermissions([
-        "public_profile",
-        "email",
-        "user_location",
-        "user_gender",
-        "user_birthday"
-      ]);
+	facebookLogin = async () => {
+		const { navigation } = this.props;
 
-      if (result.isCancelled) {
-        navigation.goBack();
-      }
+		try {
+			const result = await LoginManager.logInWithReadPermissions([
+				'public_profile',
+				'email',
+				'user_location',
+				'user_gender',
+				'user_birthday'
+			]);
 
-      console.log(
-        `Login success with permissions: ${result.grantedPermissions.toString()}`
-      );
+			if (result.isCancelled) {
+				navigation.goBack();
+			}
 
-      // get the access token
-      const data = await AccessToken.getCurrentAccessToken();
+			console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
 
-      if (!data) {
-        navigation.goBack();
-      }
+			// get the access token
+			const data = await AccessToken.getCurrentAccessToken();
 
-      // create a new firebase credential with the token
-      const credential = firebase.auth.FacebookAuthProvider.credential(
-        data.accessToken
-      );
+			if (!data) {
+				navigation.goBack();
+			}
 
-      // login with credential
-      const currentUser = await firebase
-        .auth()
-        .signInAndRetrieveDataWithCredential(credential);
+			// create a new firebase credential with the token
+			const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
 
-      console.info(JSON.stringify(currentUser.user.toJSON()));
-    } catch (e) {
-      console.error(e);
-      navigation.goBack();
-    }
-  };
+			// login with credential
+			const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
 
-  render() {
-    return (
-      <Container style={styles.container}>
-        <Content
-          contentContainerStyle={{
-            flex: 1,
-            justifyContent: "flex-end",
-            marginBottom: 30
-          }}
-        >
-          <Button
-            iconLeft
-            large
-            style={{
-              backgroundColor: "#0077b5",
-              alignSelf: "center",
-              width: 280,
-              justifyContent: "flex-start",
-              marginBottom: 20
-            }}
-          >
-            <Icon
-              type="MaterialCommunityIcons"
-              name="linkedin"
-              style={{ fontSize: 30 }}
-            />
-            <Text>Login with LinkedIn</Text>
-          </Button>
-          <Button
-            iconLeft
-            large
-            style={{
-              backgroundColor: "#3B5998",
-              alignSelf: "center",
-              width: 280,
-              justifyContent: "flex-start"
-            }}
-            onPress={this.facebookLogin}
-          >
-            <Icon
-              type="MaterialCommunityIcons"
-              name="facebook-box"
-              style={{ fontSize: 30 }}
-            />
-            <Text>Login with Facebook</Text>
-          </Button>
-          {/*<View style={{flex: 1, justifyContent: "flex-end", backgroundColor: "red"}}>*/}
-          {/*<Text style={styles.topText}>Choose your location</Text>*/}
-          {/*</View>*/}
-          {/*<Image source={map} style={styles.mapImage} />*/}
-          {/*<View style={styles.infoTextView}>*/}
-          {/*<Text style={styles.infoText}>*/}
-          {/*Looks like we cant locate you right now.*/}
-          {/*</Text>*/}
-          {/*<Text style={styles.infoText}>*/}
-          {/*Please turn on your location services to know your delivery area.*/}
-          {/*</Text>*/}
-          {/*</View>*/}
+			console.info(JSON.stringify(currentUser.user.toJSON()));
+		} catch (e) {
+			console.error(e);
+			navigation.goBack();
+		}
+	};
 
-          {/*<Button*/}
-          {/*block*/}
-          {/*style={styles.gpsAutoBtn}*/}
-          {/*onPress={() => navigation.navigate("Location")}*/}
-          {/*>*/}
-          {/*<Text>Use my GPS location</Text>*/}
-          {/*</Button>*/}
+	componentWillMount() {
+		firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+				this.props.navigation.navigate('TabNavigation')
+			} else {
+				this.setState({ loading: false })
+			}
+		});
+	}
 
-          {/*<Text style={styles.otherText}>*/}
-          {/*Or manually enter your address below*/}
-          {/*</Text>*/}
+	render() {
+		return this.state.loading ? (
+			<Spinner />
+		) : (
+			<Container style={styles.container}>
+				<Content
+					contentContainerStyle={{
+						flex: 1,
+						justifyContent: 'flex-end',
+						marginBottom: 30
+					}}
+				>
+					<Button
+						iconLeft
+						large
+						style={{
+							backgroundColor: '#0077b5',
+							alignSelf: 'center',
+							width: 280,
+							justifyContent: 'flex-start',
+							marginBottom: 20
+						}}
+					>
+						<Icon type="MaterialCommunityIcons" name="linkedin" style={{ fontSize: 30 }} />
+						<Text>Login with LinkedIn</Text>
+					</Button>
+					<Button
+						iconLeft
+						large
+						style={{
+							backgroundColor: '#3B5998',
+							alignSelf: 'center',
+							width: 280,
+							justifyContent: 'flex-start'
+						}}
+						onPress={this.facebookLogin}
+					>
+						<Icon type="MaterialCommunityIcons" name="facebook-box" style={{ fontSize: 30 }} />
+						<Text>Login with Facebook</Text>
+					</Button>
+					{/*<View style={{flex: 1, justifyContent: "flex-end", backgroundColor: "red"}}>*/}
+					{/*<Text style={styles.topText}>Choose your location</Text>*/}
+					{/*</View>*/}
+					{/*<Image source={map} style={styles.mapImage} />*/}
+					{/*<View style={styles.infoTextView}>*/}
+					{/*<Text style={styles.infoText}>*/}
+					{/*Looks like we cant locate you right now.*/}
+					{/*</Text>*/}
+					{/*<Text style={styles.infoText}>*/}
+					{/*Please turn on your location services to know your delivery area.*/}
+					{/*</Text>*/}
+					{/*</View>*/}
 
-          {/*<Button*/}
-          {/*block*/}
-          {/*style={styles.gpsManualBtn}*/}
-          {/*onPress={() => navigation.navigate("Location")}*/}
-          {/*>*/}
-          {/*<Text>Enter the location manually</Text>*/}
-          {/*</Button>*/}
+					{/*<Button*/}
+					{/*block*/}
+					{/*style={styles.gpsAutoBtn}*/}
+					{/*onPress={() => navigation.navigate("Location")}*/}
+					{/*>*/}
+					{/*<Text>Use my GPS location</Text>*/}
+					{/*</Button>*/}
 
-          {/*<View style={{alignSelf: "center"}}>*/}
+					{/*<Text style={styles.otherText}>*/}
+					{/*Or manually enter your address below*/}
+					{/*</Text>*/}
 
-          {/*</View>*/}
-        </Content>
-      </Container>
-    );
-  }
+					{/*<Button*/}
+					{/*block*/}
+					{/*style={styles.gpsManualBtn}*/}
+					{/*onPress={() => navigation.navigate("Location")}*/}
+					{/*>*/}
+					{/*<Text>Enter the location manually</Text>*/}
+					{/*</Button>*/}
+
+					{/*<View style={{alignSelf: "center"}}>*/}
+
+					{/*</View>*/}
+				</Content>
+			</Container>
+		);
+	}
 }
 
 export default Login;
