@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "76737237573",
+    "firebase_url": "https://spennyapp.firebaseio.com",
+    "project_id": "spennyapp",
+    "storage_bucket": "spennyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76737237573:android:7f667a7954eb50cb",
+        "android_client_info": {
+          "package_name": "com.spenny.spennyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76737237573-gbkbdui9t5rah4n54f1iqhaa28lijvk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4Jj8hFiT_TQSgws1d0MmMb-qRTfqERIw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
