@@ -32,10 +32,3 @@ export const Terms = styled.Text`
 	font-size: 10;
 	margin-top: 50;
 `;
-
-export const FindOutMoreText = styled.Text`
-	text-align: center;
-	font-size: 14;
-	margin-top: 10;
-`;
-

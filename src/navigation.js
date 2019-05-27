@@ -49,14 +49,8 @@ export const goHome = () =>
 export const goToAuth = () =>
 	Navigation.setRoot({
 		root: {
-			stack: {
-				children: [
-					{
-						component: {
-							name: 'SignIn'
-						}
-					}
-				]
+			component: {
+				name: 'SignIn'
 			}
 		}
 	});
