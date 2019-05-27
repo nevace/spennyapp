@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
 	flex: 1;
+	justify-content: space-between;
+	align-items: center;
 `;
 
 export const LogoContainer = styled.View`
@@ -17,3 +19,23 @@ export const Logo = styled.Image`
 export const Strapline = styled.Text`
 	font-size: 12;
 `;
+
+export const SignInButtons = styled.View`
+	margin-left: 20;
+	margin-right: 20;
+	margin-bottom: 20;
+	justify-content: center;
+`;
+
+export const Terms = styled.Text`
+	color: rgba(55,57,58,0.39);
+	font-size: 10;
+	margin-top: 50;
+`;
+
+export const FindOutMoreText = styled.Text`
+	text-align: center;
+	font-size: 14;
+	margin-top: 10;
+`;
+

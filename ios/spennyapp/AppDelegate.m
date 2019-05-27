@@ -13,6 +13,7 @@
 #import <Firebase.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <RNGoogleSignin/RNGoogleSignin.h>
 
 @implementation AppDelegate
 
@@ -50,11 +51,10 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
   
-  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-    openURL:url
+  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url
     sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
-  ];
+    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]]
+    || [RNGoogleSignin application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
 
   return handled;
 }
