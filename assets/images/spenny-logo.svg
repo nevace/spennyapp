@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="203px" height="31px" viewBox="0 0 203 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="OnBoarding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Ubuntu-Bold, Ubuntu" font-size="38" font-weight="bold" letter-spacing="7.238095">
+        <g id="Splash-Screen" transform="translate(-82.000000, -170.000000)">
+            <g id="Group" transform="translate(82.000000, 163.000000)">
+                <text id="SPENNY." fill="#FFDCDC">
+                    <tspan x="2" y="37">SPENNY.</tspan>
+                </text>
+                <text id="SPENNY." stroke="#946B6B" stroke-width="2" fill="#FFFFFF" fill-opacity="0">
+                    <tspan x="0" y="35">SPENNY.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

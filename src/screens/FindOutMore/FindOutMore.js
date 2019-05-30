@@ -41,7 +41,7 @@ const FindOutMore = ({ componentId }) => {
 								type="outline"
 								onPress={() => Navigation.dismissModal(componentId)}
 								title="Get Started"
-								titleStyle={{ color: '#37393A', fontSize: 16 }}
+								titleStyle={{ color: '#37393A', fontSize: 14 }}
 								buttonStyle={button}
 								raised
 							/>

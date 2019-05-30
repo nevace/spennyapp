@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native-elements';
 import { Text } from 'react-native';
 import { facebookSignIn, googleSignIn } from '../../userSignInFlows';
-import { Container, LogoContainer, Logo, Strapline, SignInButtons, Terms } from './SignIn.styled';
+import { Container, LogoContainer, Logo, Strapline, SignInButtons, Terms, Intro } from './SignIn.styled';
 import spennyLogo from '../../../assets/images/spenny-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -32,7 +32,7 @@ const SignIn = ({ componentId }) => {
 					icon={<FontAwesomeIcon icon={faGoogle} color="#4285F4" size={22} />}
 					onPress={googleSignIn}
 					title="Sign in with Google"
-					titleStyle={{ color: '#4285F4', paddingLeft: 15, fontSize: 16 }}
+					titleStyle={{ color: '#4285F4', paddingLeft: 15, fontSize: 14 }}
 					buttonStyle={buttonLeft}
 					containerStyle={{ marginBottom: 10 }}
 					raised
@@ -42,14 +42,14 @@ const SignIn = ({ componentId }) => {
 					icon={<FontAwesomeIcon icon={faFacebookF} color="#3C5193" size={22} />}
 					onPress={facebookSignIn}
 					title="Sign in with Facebook"
-					titleStyle={{ color: '#3C5193', paddingLeft: 15, fontSize: 16 }}
+					titleStyle={{ color: '#3C5193', paddingLeft: 15, fontSize: 14 }}
 					buttonStyle={buttonLeft}
 					containerStyle={{ marginBottom: 10 }}
 					raised
 				/>
-				<Text onPress={() => Navigation.showModal({ component: { name: 'FindOutMore' } })}>
+				<Intro onPress={() => Navigation.showModal({ component: { name: 'FindOutMore' } })}>
 					Find out more
-				</Text>
+				</Intro>
 				<Terms>By signing up to Spenny you are agreeing to our Terms and Privacy Policy</Terms>
 			</SignInButtons>
 		</Container>
