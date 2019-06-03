@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container,  Heading, ImageContainer, Text, TextContainer } from './Onboarding.styled';
+import { Container,  HeadingOne, ImageContainer, TextOne, TextContainer } from './Onboarding.styled';
 import { Image } from 'react-native';
 
 
@@ -13,8 +13,8 @@ const SlideOne = ({heading, text}) => {
 				/>
 			</ImageContainer>
 			<TextContainer>
-				<Heading>{heading}</Heading>
-				<Text>{text}</Text>
+				<HeadingOne>{heading}</HeadingOne>
+				<TextOne>{text}</TextOne>
 			</TextContainer>
 		</Container>
 	)

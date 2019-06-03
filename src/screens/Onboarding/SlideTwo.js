@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container,  Heading, ImageContainer, Text, TextContainer } from './Onboarding.styled';
-import { Image } from 'react-native';
+import { Container } from './Onboarding.styled';
+import { Text } from 'react-native';
 
 
 const SlideTwo = () => {
