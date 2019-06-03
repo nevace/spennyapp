@@ -18,6 +18,7 @@ export const Logo = styled.Image`
 
 export const Strapline = styled.Text`
 	font-size: 12;
+	margin-top: 5;
 `;
 
 export const SignInButtons = styled.View`

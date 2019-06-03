@@ -3,7 +3,8 @@ import { ImageBackground } from 'react-native';
 import { Button } from 'react-native-elements';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Navigation } from 'react-native-navigation';
-import { Container, Title, ButtonContainer, Text } from './FindOutMore.styled';
+import LinearGradient from 'react-native-linear-gradient';
+import { Title, ButtonContainer, Text } from './FindOutMore.styled';
 import { button } from '../../styles';
 
 const slides = [
@@ -32,7 +33,10 @@ const FindOutMore = ({ componentId }) => {
 	const renderItem = item => {
 		return (
 			<ImageBackground source={item.image} style={{ width: '100%', height: '100%' }}>
-				<Container>
+				<LinearGradient
+					colors={['#ffffff00', '#ffffff']}
+					style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 100 }}
+				>
 					<Title>{item.title}</Title>
 					<Text>{item.text}</Text>
 					{item.button && (
@@ -47,7 +51,7 @@ const FindOutMore = ({ componentId }) => {
 							/>
 						</ButtonContainer>
 					)}
-				</Container>
+				</LinearGradient>
 			</ImageBackground>
 		);
 	};

@@ -12,6 +12,8 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.2):
     - BoringSSL-GRPC/Interface (= 0.0.2)
   - BoringSSL-GRPC/Interface (0.0.2)
+  - BVLinearGradient (2.5.4):
+    - React
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - DoubleConversion (1.1.5)
@@ -281,9 +283,12 @@ PODS:
     - React
   - RNSVG (9.4.0):
     - React
+  - RNVectorIcons (6.4.2):
+    - React
   - yoga (0.59.8.React)
 
 DEPENDENCIES:
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - Crashlytics (~> 3.12.0)
   - Fabric (~> 1.9.0)
   - FBSDKCoreKit (~> 4.39.1)
@@ -317,6 +322,7 @@ DEPENDENCIES:
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -359,6 +365,8 @@ SPEC REPOS:
     - Protobuf
 
 EXTERNAL SOURCES:
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
   Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   React:
@@ -369,6 +377,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-google-signin"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -376,6 +386,7 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
+  BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -414,8 +425,9 @@ SPEC CHECKSUMS:
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
   RNSVG: 9cb6e958c4b6a1f58185ac72a350b148947d6fed
+  RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
 
-PODFILE CHECKSUM: 18ac1a28965250c35b86b07bf2c00e6519c703e5
+PODFILE CHECKSUM: 1c4d1cbc8435b09aad1e56bc2bf83f306cbbd0aa
 
 COCOAPODS: 1.7.0

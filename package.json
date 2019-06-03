@@ -24,6 +24,7 @@
     "react-native-firebase": "^5.3.1",
     "react-native-global-props": "^1.1.5",
     "react-native-google-signin": "^2.0.0",
+    "react-native-linear-gradient": "^2.5.4",
     "react-native-navigation": "^2.20.1",
     "react-native-svg": "^9.4.0",
     "react-native-vector-icons": "^6.4.2",
@@ -47,6 +48,7 @@
     "jest": "^24.7.1",
     "metro-react-native-babel-preset": "^0.53.1",
     "prettier": "^1.17.1",
+    "react-native-svg-transformer": "^0.13.0",
     "react-test-renderer": "16.8.3",
     "replace-in-file": "^3.4.4"
   },

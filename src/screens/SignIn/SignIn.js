@@ -1,19 +1,18 @@
 import React from 'react';
 import { Button } from 'react-native-elements';
-import { Text } from 'react-native';
 import { facebookSignIn, googleSignIn } from '../../userSignInFlows';
-import { Container, LogoContainer, Logo, Strapline, SignInButtons, Terms, Intro } from './SignIn.styled';
-import spennyLogo from '../../../assets/images/spenny-logo.png';
+import { Container, LogoContainer, Strapline, SignInButtons, Terms, Intro } from './SignIn.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { Navigation } from 'react-native-navigation';
 import {buttonLeft} from '../../styles';
+import SpennyLogo from '../../SpennyLogo';
 
-const SignIn = ({ componentId }) => {
+const SignIn = () => {
 	return (
 		<Container>
 			<LogoContainer>
-				<Logo source={spennyLogo} />
+				<SpennyLogo />
 				<Strapline>Rewards of the future</Strapline>
 			</LogoContainer>
 			<SignInButtons>
