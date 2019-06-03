@@ -278,6 +278,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNCAsyncStorage (1.4.2):
+    - React
   - RNGoogleSignin (2.0.0):
     - GoogleSignIn (~> 4.4.0)
     - React
@@ -320,6 +322,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -373,6 +376,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNGoogleSignin:
     :path: "../node_modules/react-native-google-signin"
   RNSVG:
@@ -423,11 +428,12 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   React: 76e6aa2b87d05eb6cccb6926d72685c9a07df152
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
+  RNCAsyncStorage: 285698b8a4f219573174d99e863a78b93f389272
   RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
   RNSVG: 9cb6e958c4b6a1f58185ac72a350b148947d6fed
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
 
-PODFILE CHECKSUM: 1c4d1cbc8435b09aad1e56bc2bf83f306cbbd0aa
+PODFILE CHECKSUM: bb0b495853b072a9fced332d4d6640e35d49d8e8
 
 COCOAPODS: 1.7.0

@@ -5,20 +5,18 @@ import firebase from 'react-native-firebase';
 
 export default class Initialising extends Component {
 	async componentDidMount() {
-		goToAuth();
-
-		// try {
-		// 	firebase.auth().onAuthStateChanged(user => {
-		// 		if (user) {
-		// 			goHome();
-		// 		} else {
-		// 			goToAuth();
-		// 		}
-		// 	});
-		// } catch (err) {
-		// 	console.log('error: ', err);
-		// 	goToAuth();
-		// }
+		try {
+			firebase.auth().onAuthStateChanged(user => {
+				if (user) {
+					goHome();
+				} else {
+					goToAuth();
+				}
+			});
+		} catch (err) {
+			console.error(err);
+			goToAuth();
+		}
 	}
 
 	render() {
