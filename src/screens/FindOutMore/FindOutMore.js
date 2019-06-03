@@ -7,29 +7,29 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Title, ButtonContainer, Text } from './FindOutMore.styled';
 import { button } from '../../styles';
 
-const slides = [
-	{
-		key: 'findoutMore1',
-		title: 'Rewards of the future',
-		text: 'Earn cashback directly into your bank account when you buy your meals with our partners.',
-		image: require('../../../assets/images/find-out-more-1.png')
-	},
-	{
-		key: 'findoutMore2',
-		title: 'Leading rewards',
-		text: 'Discover value. Compared to our competitors we offer upto 3x more cashback.',
-		image: require('../../../assets/images/find-out-more-2.png')
-	},
-	{
-		key: 'findoutMore3',
-		title: 'Our partners',
-		text: 'Offers. We are always working with great partners to offer you the best deal possible.',
-		image: require('../../../assets/images/find-out-more-3.png'),
-		button: true
-	}
-];
 
 const FindOutMore = ({ componentId }) => {
+	const slides = [
+		{
+			key: 'findoutMore1',
+			title: 'Rewards of the future',
+			text: 'Earn cashback directly into your bank account when you buy your meals with our partners.',
+			image: require('../../../assets/images/find-out-more-1.png')
+		},
+		{
+			key: 'findoutMore2',
+			title: 'Leading rewards',
+			text: 'Discover value. Compared to our competitors we offer upto 3x more cashback.',
+			image: require('../../../assets/images/find-out-more-2.png')
+		},
+		{
+			key: 'findoutMore3',
+			title: 'Our partners',
+			text: 'Offers. We are always working with great partners to offer you the best deal possible.',
+			image: require('../../../assets/images/find-out-more-3.png'),
+			button: true
+		}
+	];
 	const renderItem = item => {
 		return (
 			<ImageBackground source={item.image} style={{ width: '100%', height: '100%' }}>

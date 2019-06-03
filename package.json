@@ -29,6 +29,11 @@
     "react-native-navigation": "^2.20.1",
     "react-native-svg": "^9.4.0",
     "react-native-vector-icons": "^6.4.2",
+    "react-redux": "^7.0.3",
+    "react-redux-firebase": "^2.2.6",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-firestore": "^0.8.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {

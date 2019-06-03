@@ -1,16 +1,29 @@
+import React, {createElement} from 'react';
 import { Navigation } from 'react-native-navigation';
-import Initialising from './screens/Initialising';
-import SignIn from './screens/SignIn/SignIn';
-import FindOutMore from './screens/FindOutMore/FindOutMore';
-import Onboarding from './screens/Onboarding/Onboarding';
-import Discover from './screens/Discover';
-import Account from './screens/Account';
+import { Provider } from 'react-redux';
+import store from './store';
+
+const screens = {
+	Initialising: require('./screens/Initialising').default,
+	SignIn: require('./screens/SignIn/SignIn').default,
+	FindOutMore: require('./screens/FindOutMore/FindOutMore').default,
+	Onboarding: require('./screens/Onboarding/Onboarding').default,
+	Discover: require('./screens/Discover').default,
+	Account: require('./screens/Account').default,
+};
 
 export function registerScreens() {
-	Navigation.registerComponent('Initialising', () => Initialising);
-	Navigation.registerComponent('SignIn', () => SignIn);
-	Navigation.registerComponent('FindOutMore', () => FindOutMore);
-	Navigation.registerComponent('Onboarding', () => Onboarding);
-	Navigation.registerComponent('Discover', () => Discover);
-	Navigation.registerComponent('Account', () => Account);
+	for (let screen of Object.keys(screens)) {
+		const Component = screens[screen];
+
+		Navigation.registerComponent(
+			screen,
+			() => props => (
+				<Provider store={store}>
+					<Component {...props} />
+				</Provider>
+			),
+			() => Component
+		);
+	}
 }
