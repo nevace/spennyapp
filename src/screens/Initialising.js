@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { PureComponent } from 'react';
+import { View, Text } from 'react-native';
 import { goToAuth, goHome } from '../navigation';
 import firebase from 'react-native-firebase';
 
-export default class Initialising extends Component {
-	async componentDidMount() {
+export default class Initialising extends PureComponent {
+	async componentWillMount() {
 		try {
 			firebase.auth().onAuthStateChanged(user => {
 				if (user) {
@@ -22,20 +22,9 @@ export default class Initialising extends Component {
 	render() {
 		// this will show the splash screen
 		return (
-			<View style={styles.container}>
-				<Text style={styles.welcome}>Loading</Text>
+			<View>
+				<Text>Loading</Text>
 			</View>
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	welcome: {
-		fontSize: 28
-	},
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center'
-	}
-});

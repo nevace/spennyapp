@@ -60,6 +60,8 @@ target 'spennyapp' do
 
    pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
+   pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
+
    post_install do |installer|
      installer.pods_project.targets.each do |target|
        if target.name == "React"

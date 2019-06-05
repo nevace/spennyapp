@@ -11,32 +11,77 @@ export const goHome = async () => {
 				}
 			});
 		} else {
+			Navigation.setDefaultOptions({
+				topBar: {
+					hideOnScroll: false,
+					// animate: true,
+					background: {
+						color: 'rgba(248,248,248,0.82)',
+					},
+					title: {
+						component: {
+							name: 'SpennyLogo'
+						}
+					}
+				}
+			});
+
 			Navigation.setRoot({
 				root: {
 					bottomTabs: {
 						children: [
 							{
-								component: {
-									name: 'Discover',
-									options: {
-										bottomTab: {
-											text: 'Discover',
-											fontSize: 12
-											// icon: require('./signup.png')
+								stack: {
+									children: [
+										{
+											component: {
+												name: 'Home',
+												options: {
+													bottomTab: {
+														text: 'Home',
+														fontSize: 12
+														// icon: require('./signup.png')
+													}
+												}
+											}
 										}
-									}
+									]
 								}
 							},
 							{
-								component: {
-									name: 'Account',
-									options: {
-										bottomTab: {
-											fontSize: 12,
-											text: 'Account'
-											// icon: require('./signin.png')
+								stack: {
+									children: [
+										{
+											component: {
+												name: 'Discover',
+												options: {
+													bottomTab: {
+														text: 'Discover',
+														fontSize: 12
+														// icon: require('./signup.png')
+													}
+												}
+											}
 										}
-									}
+									]
+								}
+							},
+							{
+								stack: {
+									children: [
+										{
+											component: {
+												name: 'Account',
+												options: {
+													bottomTab: {
+														fontSize: 12,
+														text: 'Account'
+														// icon: require('./signin.png')
+													}
+												}
+											}
+										}
+									]
 								}
 							}
 						]

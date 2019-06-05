@@ -1,6 +1,6 @@
 import firebase from 'react-native-firebase';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
-import { goHome } from './navigation';
+import { goHome, goToAuth } from './navigation';
 import { GoogleSignin } from 'react-native-google-signin';
 import moment from 'moment';
 

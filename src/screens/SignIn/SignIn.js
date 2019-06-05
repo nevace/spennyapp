@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { Navigation } from 'react-native-navigation';
 import {buttonLeft} from '../../styles';
-import SpennyLogo from '../../SpennyLogo';
+import SpennyLogo from '../../components/SpennyLogo';
 
 const SignIn = () => {
 	return (

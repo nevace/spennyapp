@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { registerScreens } from './src/screens';
+import { registerScreens } from './src/registerScreens';
 import { setCustomText } from 'react-native-global-props';
 
 setCustomText({style: { fontSize: 14, fontFamily: 'Ubuntu', color: '#37393A', textAlign: 'center', lineHeight: 20 }});
