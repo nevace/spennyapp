@@ -4,7 +4,7 @@ import { goToAuth, goHome } from '../navigation';
 import firebase from 'react-native-firebase';
 
 export default class Initialising extends PureComponent {
-	async componentWillMount() {
+	async componentDidMount() {
 		try {
 			firebase.auth().onAuthStateChanged(user => {
 				if (user) {

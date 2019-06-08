@@ -19,14 +19,15 @@ export async function googleSignIn() {
 			email: user.email,
 			phoneNumber: user.phoneNumber,
 			photoURL: user.photoURL,
-			provider: 'google'
+			provider: 'google',
+			createdAt: firebase.firestore.FieldValue.serverTimestamp()
 		};
 
 		firebase
 			.firestore()
 			.collection('users')
 			.doc(user.uid)
-			.set(userData, {merge: true});
+			.set(userData, { merge: true });
 
 		goHome();
 	} catch (e) {
@@ -68,14 +69,15 @@ export async function facebookSignIn() {
 			email: user.email,
 			phoneNumber: user.phoneNumber,
 			photoURL: user.photoURL,
-			provider: 'facebook'
+			provider: 'facebook',
+			createdAt: firebase.firestore.FieldValue.serverTimestamp()
 		};
 
 		firebase
 			.firestore()
 			.collection('users')
 			.doc(user.uid)
-			.set(userData, {merge: true});
+			.set(userData, { merge: true });
 
 		goHome();
 	} catch (e) {

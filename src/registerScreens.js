@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
-import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import store from './store';
-import RNFirebase from "react-native-firebase";
-import { createFirestoreInstance } from 'redux-firestore'
+import RNFirebase from 'react-native-firebase';
+import { createFirestoreInstance } from 'redux-firestore';
 
 const screens = {
 	Initialising: require('./screens/Initialising').default,
@@ -13,15 +13,16 @@ const screens = {
 	Onboarding: require('./screens/Onboarding/Onboarding').default,
 	Home: require('./screens/Home').default,
 	Discover: require('./screens/Discover').default,
+	RestaurantDetail: require('./screens/RestaurantDetail/RestaurantDetail').default,
 	Account: require('./screens/Account').default
 };
 
 const rrfProps = {
-	  firebase:  RNFirebase.initializeApp(),
-		config: { userProfile: 'users', useFirestoreForProfile: true },
-	  dispatch: store.dispatch,
+	firebase: RNFirebase.initializeApp(),
+	config: { userProfile: 'users', useFirestoreForProfile: true },
+	dispatch: store.dispatch,
 	createFirestoreInstance
- }
+};
 
 export function registerScreens() {
 	for (let screen of Object.keys(screens)) {
@@ -32,7 +33,7 @@ export function registerScreens() {
 			() => props => (
 				<Provider store={store}>
 					<ReactReduxFirebaseProvider {...rrfProps}>
-					<Component {...props} />
+						<Component {...props} />
 					</ReactReduxFirebaseProvider>
 				</Provider>
 			),

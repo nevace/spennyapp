@@ -14,7 +14,6 @@ export const goHome = async () => {
 			Navigation.setDefaultOptions({
 				topBar: {
 					hideOnScroll: false,
-					// animate: true,
 					background: {
 						color: 'rgba(248,248,248,0.82)',
 					},

@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import HorizontalList from '../components/HorizontalList/HorizontalList';
+import React, { PureComponent } from 'react';
+import RestaurantList from '../components/RestaurantList';
 import { firestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-class Discover extends Component {
+class Discover extends PureComponent {
 	render() {
-		const { restaurants } = this.props;
+		const { restaurants, componentId } = this.props;
 
-		return isLoaded(restaurants) ? <HorizontalList title="Fine Dining" data={Object.values(restaurants)} /> : null;
+		return isLoaded(restaurants) ? (
+			<RestaurantList title="Fine Dining" data={Object.values(restaurants)} componentId={componentId} />
+		) : null;
 
 		// if (isEmpty(todos)) {
 		// 	return <div>Todos List Is Empty</div>

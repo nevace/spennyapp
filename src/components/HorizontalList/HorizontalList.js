@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import { Container, TextContainer, Name, ItemTextContainer, Item, ItemImageContainer } from './HorizontalList.styled';
 import FastImage from 'react-native-fast-image';
 
-const HorizontalList = ({ title, data }) => {
-	const renderItem = ({ item }) => {
-		console.log('ddd', item);
+const HorizontalList = ({ title, data, onItemPress }) => {
+
+	const renderItem = ({ item, index }) => {
 		return (
-			<Item>
+			<Item onPress={onItemPress(data[index])}>
 				<ItemImageContainer>
 					<FastImage source={{ uri: item.thumbnail }} style={{ height: 157, width: '100%' }} />
 				</ItemImageContainer>
