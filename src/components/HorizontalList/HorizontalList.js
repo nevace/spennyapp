@@ -13,6 +13,7 @@ const HorizontalList = ({ title, data, onItemPress }) => {
 				</ItemImageContainer>
 				<ItemTextContainer>
 					<Name>{item.name}</Name>
+					{/*<Text>{item.name}</Text>*/}
 				</ItemTextContainer>
 			</Item>
 		);
