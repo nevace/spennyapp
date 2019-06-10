@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
 	margin-left: 10;
+	margin-top: ${props => props.banner && 45};
 `;
 
 export const TextContainer = styled.View`
@@ -26,13 +27,25 @@ export const ItemTextContainer = styled.View`
 `;
 
 export const ItemImageContainer = styled.View`
-	border-top-left-radius: 10;
-	border-top-right-radius: 10;
+	border-top-left-radius: 5;
+	border-top-right-radius: 5;
 	overflow: hidden;
+`;
+
+export const DistanceContainer = styled.View`
+	flex-direction: row;
+	align-items: center;
 `;
 
 export const Name = styled.Text`
 	font-size: 12;
+	text-align: left;
+`;
+
+export const Distance = styled.Text`
+	font-size: 10;
+	text-align: left;
+	margin-left: 3;
 `;
 
 export const Item = styled.TouchableOpacity`
@@ -40,8 +53,3 @@ export const Item = styled.TouchableOpacity`
 	width: 150;
 	margin-right: 10;
 `;
-
-// export const TextContainer = styled.View`
-// 	flex: 5;
-// 	align-items: center;
-// `;

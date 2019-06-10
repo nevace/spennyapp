@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { Platform, PermissionsAndroid } from 'react-native';
 import HorizontalList from './HorizontalList/HorizontalList';
 import { Navigation } from 'react-native-navigation';
-import Geolocation from 'react-native-geolocation-service';
+import getDistance from 'geolib/es/getDistance';
+import RNLocation from 'react-native-location';
+
+RNLocation.configure({
+	distanceFilter: 10
+});
 
 class RestaurantList extends Component {
 	state = {
-		data: null,
-		error: null
+		data: null
 	};
 
-	watchId = null;
+	locationSubscription = null;
 
 	handleItemPress = data => () => {
 		Navigation.push(this.props.componentId, {
@@ -19,6 +22,25 @@ class RestaurantList extends Component {
 				passProps: data
 			}
 		});
+	};
+
+	calculateRestaurantDistance = locations => {
+		const { latitude, longitude } = locations.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())[0];
+		const updateDistanceData = this.props.data.map(restaurant => {
+			const distance = Math.round(
+				getDistance(
+					{ latitude, longitude },
+					{
+						latitude: restaurant.location.geo._latitude,
+						longitude: restaurant.location.geo._longitude
+					}
+				) / 83.33 // based on 83.33 metres per min
+			);
+
+			return { ...restaurant, distance };
+		});
+
+		this.setState({ data: updateDistanceData });
 	};
 
 	componentDidMount() {
@@ -32,47 +54,43 @@ class RestaurantList extends Component {
 	}
 
 	async componentDidAppear() {
-		if (Platform.OS === 'android') {
-			const permission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+		const permissions = { ios: 'whenInUse', android: { detail: 'fine' } };
+		const permissionsAlreadyGranted = await RNLocation.checkPermission(permissions);
 
-			if (permission === PermissionsAndroid.RESULTS.DENIED) {
-				// show no location banner
-				this.setState({ error: 'PERMISSION_DENIED' });
-				return;
-			}
+		// permissions have been granted already
+		if (permissionsAlreadyGranted) {
+			this.locationSubscription = RNLocation.subscribeToLocationUpdates(this.calculateRestaurantDistance);
 		} else {
-			await navigator.geolocation.requestAuthorization();
-		}
+			// request permissions (only works once)
+			const requestPermissions = await RNLocation.requestPermission(permissions);
 
-		this.watchId = Geolocation.watchPosition(
-			position => {
-				console.log('pos', position);
-				const updateDistanceData = this.props.data.map(restaurant => {
-					//restaurant.distance =  //position.coords.latitude //position.coords.longitude calculation
-					return restaurant;
-				});
-				this.setState({
-					data: updateDistanceData,
-					error: null
-				});
-			},
-			error => {
-				console.log('er', error);
-				// show no location banner
-				this.setState({ error: error.message });
-			},
-			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 }
-		);
+			// permissions granted
+			if (requestPermissions) {
+				this.locationSubscription = RNLocation.subscribeToLocationUpdates(this.calculateRestaurantDistance);
+			} else {
+				// requested permissions rejected by user
+				this.setState({ data: this.props.data });
+
+				this.props.showBanner();
+			}
+		}
 	}
 
 	componentDidDisappear() {
-		Geolocation.clearWatch(this.watchId);
+		this.locationSubscription && this.locationSubscription();
 	}
 
 	render() {
 		const { data } = this.state;
 
-		return data ? <HorizontalList title={this.props.title} data={data} onItemPress={this.handleItemPress} /> : null;
+		return data ? (
+			<HorizontalList
+				title={this.props.title}
+				data={data}
+				onItemPress={this.handleItemPress}
+				banner={this.props.banner}
+			/>
+		) : null;
 	}
 }
 

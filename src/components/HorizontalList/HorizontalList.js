@@ -1,10 +1,20 @@
 import React from 'react';
 import { FlatList, Text } from 'react-native';
-import { Container, TextContainer, Name, ItemTextContainer, Item, ItemImageContainer } from './HorizontalList.styled';
+import {
+	Container,
+	TextContainer,
+	Name,
+	ItemTextContainer,
+	Item,
+	ItemImageContainer,
+	Distance,
+	DistanceContainer
+} from './HorizontalList.styled';
 import FastImage from 'react-native-fast-image';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-const HorizontalList = ({ title, data, onItemPress }) => {
-
+const HorizontalList = ({ title, data, onItemPress, banner }) => {
 	const renderItem = ({ item, index }) => {
 		return (
 			<Item onPress={onItemPress(data[index])}>
@@ -13,14 +23,19 @@ const HorizontalList = ({ title, data, onItemPress }) => {
 				</ItemImageContainer>
 				<ItemTextContainer>
 					<Name>{item.name}</Name>
-					{/*<Text>{item.name}</Text>*/}
+					{item.distance && (
+						<DistanceContainer>
+							<FontAwesomeIcon icon={faMapMarkerAlt} color="#37393A" size={10} />
+							<Distance>{item.distance} minute walk</Distance>
+						</DistanceContainer>
+					)}
 				</ItemTextContainer>
 			</Item>
 		);
 	};
 
 	return (
-		<Container>
+		<Container banner>
 			<TextContainer>
 				<Text>{title}</Text>
 				<Text>View all</Text>
